@@ -43,7 +43,7 @@ until repeat == false
 					invalid
 			end
 		when "a"
-			puts "You've selected advanced mode. \nPlease select which calculation to perform: \nFor Powers, please enter p. \nFor Square Root, please enter sq. \nFor BMI Calculator, please enter bmi."
+			puts "You've selected advanced mode. \nPlease select which calculation to perform: \nFor Powers, please enter p. \nFor Square Root, please enter sq. \nFor BMI calculator, please enter bmi. \nFor trip calculator, please enter t."
 			calculation = gets.chomp.downcase
 			case calculation
 				when "p"
@@ -59,26 +59,44 @@ until repeat == false
 					result = Math.sqrt(number1)
 					puts "Your result is: \nSquare Root of #{number1} = #{result}"
 				when "bmi"
-					puts "You have selected BMI. \nTo use metric measurements, please enter m. \nTo use imperial measurements, please enter i."
+					puts "You have selected BMI calculator. \nTo use metric measurements, please enter m. \nTo use imperial measurements, please enter i."
 					units = gets.chomp.downcase
 					case units
 						when "m"
 							puts "You have selected metric. \nPlease enter your mass in kg."
-							number1 = gets.chomp.to_f
+							mass = gets.chomp.to_f
 							puts "Please enter your height in m."
-							number2 = gets.chomp.to_f
-							result = number1 / (number2 ** 2)
+							height = gets.chomp.to_f
+							result = mass / (height ** 2)
 							puts "Your BMI is #{result}" 
 						when "i"
 							puts "You have selected imperial. \nPlease enter your mass in lb."
-							number1 = gets.chomp.to_f
+							mass = gets.chomp.to_f
 							puts "Please enter your height in in."
-							number2 = gets.chomp.to_f
-							result = (number1 / (number2 ** 2)) * 703
+							height = gets.chomp.to_f
+							result = (mass / (height ** 2)) * 703
 							puts "Your BMI is #{result}"
 						else
 							invalid
 					end
+				when "t"
+					puts "You have selected trip calculator. \nPlease enter the distance you are travelling in miles."
+					distance = gets.chomp.to_f
+					puts "Please enter your vehicles fuel efficiency in miles per gallon."
+					mpg = gets.chomp.to_f
+					puts "Please enter the current estimated cost per gallon for fuel."
+					cpg = gets.chomp.to_f
+					puts "Please enter you average expected speed in miles per hour."
+					speed = gets.chomp.to_f
+					if speed > 60
+						mpg -= (speed - 60) * 2
+					end
+					if mpg < 0
+						mpg = 1
+					end
+					time = distance / speed
+					cost = (distance / mpg) * cpg
+					puts "Your journey will take approximately #{time} hours, and will cost approximately £#{cost}."
 				else
 					invalid
 			end
