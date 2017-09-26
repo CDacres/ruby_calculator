@@ -4,7 +4,6 @@ end
 
 repeat = true
 until repeat == false
-	puts `clear`
 	puts "This is your Ruby Calculator \nPlease select which Calculator mode to access. \nEnter b for basic mode. \nEnter a for advanced mode."
 	calc_mode = gets.chomp.downcase
 	case calc_mode
