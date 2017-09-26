@@ -91,8 +91,8 @@ until repeat == false
 					if speed > 60
 						mpg -= (speed - 60) * 2
 					end
-					if mpg < 0
-						mpg = 1
+					if mpg < 0.1
+						mpg = 0.1
 					end
 					time = distance / speed
 					cost = (distance / mpg) * cpg
